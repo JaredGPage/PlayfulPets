@@ -14,6 +14,11 @@ class MainActivity : AppCompatActivity() {
     //method for when login button clicked
     fun loginLoginBtnClicked(view: View){
 
+
+
+
+        val eventIntent = Intent(this, EventActivity::class.java)//intent allows you to interact with other activites
+        startActivity(eventIntent)
     }
 
     //method for when sign up button clicked
