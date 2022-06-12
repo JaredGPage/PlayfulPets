@@ -11,7 +11,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     //method for registering button
-    fun registerSignUpBtn(view: View){
+    fun registerSignUpBtnClicked(view: View){
 
     }
 }
