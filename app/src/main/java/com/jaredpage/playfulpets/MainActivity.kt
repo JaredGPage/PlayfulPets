@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         password = loginPasswordText.text.toString()
 
 
-        val eventIntent = Intent(this, ForumActivity::class.java)//intent allows you to interact with other activites
+        val eventIntent = Intent(this, EventActivity::class.java)//intent allows you to interact with other activites
         eventIntent.putExtra(EXTRA_USER, username)
         startActivity(eventIntent)
     }

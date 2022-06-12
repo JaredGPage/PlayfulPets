@@ -23,12 +23,12 @@ class SignUpActivity : AppCompatActivity() {
 
     //method for registering button
     fun registerSignUpBtnClicked(view: View){
-
+        //set all the variables to their values
         username = registerUsernameText.text.toString()
         email = registerEmailText.text.toString()
         password = registerPasswordText.text.toString()
         checkPassword = registerPasswordRetypeText.text.toString()
-
+        //message to test values entered
         Toast.makeText(this, "$username and $password and $email and $checkPassword", Toast.LENGTH_SHORT).show()
 
 

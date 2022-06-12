@@ -15,7 +15,7 @@ class ForumActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forum)
 
-        username = intent.getStringExtra(EXTRA_USER).toString()
+        username = intent.getStringExtra(EXTRA_USER).toString() //get username from previous activity
         forumPageText.text = "Welcome $username"
 
 
