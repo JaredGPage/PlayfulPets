@@ -21,14 +21,14 @@ class MainActivity : AppCompatActivity() {
 
     //method for when login button clicked
     fun loginLoginBtnClicked(view: View){
-
+        //assign variables values from UI
         username = loginUsernameText.text.toString()
         password = loginPasswordText.text.toString()
 
-
+        //create intent which moves to event/maps activity
         val eventIntent = Intent(this, EventActivity::class.java)//intent allows you to interact with other activites
-        eventIntent.putExtra(EXTRA_USER, username)
-        startActivity(eventIntent)
+        eventIntent.putExtra(EXTRA_USER, username)//parse username to next activity, stored in userInformation.kt
+        startActivity(eventIntent)//start activity
     }
 
     //method for when sign up button clicked

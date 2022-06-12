@@ -31,8 +31,8 @@ class SignUpActivity : AppCompatActivity() {
         //message to test values entered
         Toast.makeText(this, "$username and $password and $email and $checkPassword", Toast.LENGTH_SHORT).show()
 
-
+        //create intent to move to login/main activity
         val loginIntent = Intent(this, MainActivity::class.java)//intent allows you to interact with other activites
-        startActivity(loginIntent)
+        startActivity(loginIntent)//start activity
     }
 }
