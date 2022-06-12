@@ -11,7 +11,8 @@
         android:theme="@style/Theme.PlayfulPets">
         <activity
             android:name=".ForumActivity"
-            android:exported="false" />
+            android:exported="false"/>
+
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -25,12 +26,11 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY" />
+            android:value="AIzaSyBhOqJ5l_6T2KAUKY__N9byVpgNcJn256U" />
 
         <activity
             android:name=".EventActivity"
-            android:exported="false"
-            android:label="@string/title_activity_event" />
+            android:exported="false"/>
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />

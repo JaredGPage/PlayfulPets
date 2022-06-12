@@ -29,6 +29,11 @@ class MainActivity : AppCompatActivity() {
         val eventIntent = Intent(this, EventActivity::class.java)//intent allows you to interact with other activites
         eventIntent.putExtra(EXTRA_USER, username)//parse username to next activity, stored in userInformation.kt
         startActivity(eventIntent)//start activity
+
+//        //create intent which moves to event/maps activity
+//        val forumIntent = Intent(this, ForumActivity::class.java)//intent allows you to interact with other activites
+//        forumIntent.putExtra(EXTRA_USER, username)//parse username to next activity, stored in userInformation.kt
+//        startActivity(forumIntent)//start activity
     }
 
     //method for when sign up button clicked
