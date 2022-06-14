@@ -91,4 +91,5 @@ class AddForumActivity : AppCompatActivity() {
         val forumIntent = Intent(this, ForumActivity::class.java)//intent allows you to interact with other activites
         startActivity(forumIntent)//start activity
     }
+
 }
