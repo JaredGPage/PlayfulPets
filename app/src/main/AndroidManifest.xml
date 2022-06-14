@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jaredpage.playfulpets">
+    <!--              add permission to access internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -10,9 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayfulPets">
         <activity
+            android:name=".AddForumActivity"
+            android:exported="false" />
+        <activity
             android:name=".ForumActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -30,7 +35,7 @@
 
         <activity
             android:name=".EventActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
