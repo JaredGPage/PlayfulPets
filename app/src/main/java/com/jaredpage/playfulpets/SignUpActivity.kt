@@ -5,20 +5,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import java.lang.Exception
+import java.util.*
 
 class SignUpActivity : AppCompatActivity() {
 
-    //Firebase user
-    private lateinit var auth: FirebaseAuth;
+    //Firebase connection
+    private lateinit var database: DatabaseReference
     //declare variables for user registeration
     var username = ""
     var email = ""
     var password = ""
     var checkPassword = ""
+    var userpfp = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,14 +30,12 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
 
         // Initialize Firebase Auth
-        auth = Firebase.auth
+        database = Firebase.database.reference
     }
 
     override fun onStart() {
         super.onStart()
-        //check if user is signed in (no-null) and update UI accordingly
-//        val currentUser = auth.currentUser
-//        updateUI(currentUser)
+
     }
 
     //method for registering button
@@ -46,8 +48,12 @@ class SignUpActivity : AppCompatActivity() {
     //method to check users entererd details
     private fun performAuth() {
         //set all the variables to their values
-        username = registerEmailText.text.toString()
+        //create uniques id
+        //var uniqueID = UUID.randomUUID().toString()
+
+        username = registerUsernameText.text.toString()
         email = registerEmailText.text.toString()
+        userpfp = "default"
         password = registerPasswordText.text.toString()
         checkPassword = registerPasswordRetypeText.text.toString()
 
@@ -59,25 +65,29 @@ class SignUpActivity : AppCompatActivity() {
             registerPasswordRetypeText.setError("Passwords don't match!")
         } else{
             //call method to sign up user
-            firebaseSignUp()
+            firebaseSignUp(username, email, userpfp, password)
         }
 
     }
 
-    private fun firebaseSignUp() {
-        //create onCompleteListener to run once creation of user happens to then see if creation was successful
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
-            task ->
-            if(task.isSuccessful){
-                Toast.makeText(this, "Register Success", Toast.LENGTH_SHORT).show()
-                //create intent to move to login/main activity
-                val loginIntent = Intent(this, MainActivity::class.java)//intent allows you to interact with other activites
-                startActivity(loginIntent)//start activity
-            }else{
-                Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
-            }
+    private fun firebaseSignUp(userName: String, email: String, userpfp: String, password: String) {
+        //create model of user and write to database with that users details
+
+        try {
+            //make user in UserModel
+            val user = UserModel(userName, email, userpfp, password)
+            //write to firebase
+            database.child("users").child(userName).setValue(user)
+            //create intent to send user to signup page from the current page
+            val mainIntent = Intent(this, MainActivity::class.java)//intent allows you to interact with other activites
+            startActivity(mainIntent)
+
+        }catch (e : Exception){
+            //if there is an error it will display as a toast message
+            Toast.makeText(this, "An error occured when uploading data!", Toast.LENGTH_LONG).show()
+        }
+
         }
     }
 
 
-}
