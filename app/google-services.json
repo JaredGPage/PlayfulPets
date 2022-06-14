@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "314107147166",
+    "firebase_url": "https://playful-pets-default-rtdb.firebaseio.com",
+    "project_id": "playful-pets",
+    "storage_bucket": "playful-pets.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314107147166:android:90f6a137b55df352345c8f",
+        "android_client_info": {
+          "package_name": "com.jaredpage.playfulpets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314107147166-hs2s2kff3ghgbt7ih1msf4mugat1e360.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDG9sCT3p_mijJ_e0UwxSuOJMMsXURdRY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314107147166-hs2s2kff3ghgbt7ih1msf4mugat1e360.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
