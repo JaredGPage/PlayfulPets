@@ -73,7 +73,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="1dd126e3-3f41-4799-9f3c-793541545c0e" active="true" signed="true">
+      <connection id="1dd126e3-3f41-4799-9f3c-793541545c0e" active="false" signed="true">
         <database>
           <name value="MySQL Connection" />
           <description value="" />
