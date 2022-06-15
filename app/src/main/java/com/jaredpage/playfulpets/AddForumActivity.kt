@@ -4,19 +4,21 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_add_forum.*
+import java.lang.Exception
 import java.util.*
 
 class AddForumActivity : AppCompatActivity() {
     //user variables
-    var email = ""
+    var useremail = ""
     var username = ""
     var userID = ""
-    //Firebase user
-    private lateinit var auth: FirebaseAuth
+    //Firebase reference
     private lateinit var dbref: DatabaseReference
 
     //forum variables
@@ -28,21 +30,15 @@ class AddForumActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_forum)
 
 
-        // Initialize Firebase Auth
-        auth = FirebaseAuth.getInstance()
-        //get current user
-        val currentUser = auth.currentUser
-        //assign current user's email to username
-        email = currentUser?.email.toString()
-        userID = currentUser?.uid.toString()
-        //remove domain and check that there is a value
-        val newUsername : String? = email.substringBefore("@")
-        if (newUsername != null) {
-            username = newUsername
-        }
+
+        //assign current user's details
+        username = intent.getStringExtra(EXTRA_USERNAME).toString()
+        useremail = intent.getStringExtra(EXTRA_USEREMAIL).toString()
+        userID = intent.getStringExtra(EXTRA_USERID).toString()
 
         //database
-        dbref = FirebaseDatabase.getInstance().getReference("Forum")
+        //dbref = FirebaseDatabase.getInstance().getReference("Forum")
+        dbref = Firebase.database.reference
 
     }
 
@@ -71,24 +67,40 @@ class AddForumActivity : AppCompatActivity() {
         val forumDescription = forumDescription
         val forumID = uniqueID
         val forumTitle = forumTitle
-        val threadID = 2
-        writeNewUser(forumID, forumAuthor, forumDescription, forumTitle, threadID)
+        writeNewUser(forumTitle, forumID, forumAuthor, forumDescription)
 
     }
     //write data to database
-    fun writeNewUser(forumID: String, forumAuthor: String, forumDescription: String, forumTitle: String, threadID: Int) {
-        val forumModel = ForumModel(forumID, forumAuthor, forumDescription, forumTitle, threadID)
+    fun writeNewUser(forumTitle: String, forumID: String, forumAuthor: String, forumDescription: String) {
+        try{
+            //ForumModel class
+            val forumModel = ForumModel(forumTitle, forumID, forumAuthor, forumDescription)
 
-        //pathstring is the name of the forum
-        dbref.child(forumTitle).child(forumID.toString()).setValue(forumModel)
+            //write to firebase
+            dbref.child("Forum").child(forumTitle).setValue(forumModel)
+            //Toast message to inform user of success
+            Toast.makeText(this, "New forum added!", Toast.LENGTH_LONG).show()
 
-        //method to send user back to forum
-        sendToForum()
+            //method to send user back to forum
+            sendToForum()
+        }catch (e : Exception){
+            //if there is an error it will display as a toast message
+            Toast.makeText(this, "$e", Toast.LENGTH_LONG).show()
+        }
+
     }
+
+//    //make user in UserModel
+//    val user = UserModel(userName, userID, email, userpfp, password)
+//    //write to firebase
+//    database.child("users").child(userName).setValue(user)
 
     private fun sendToForum() {
         //create intent which moves to forum activity
         val forumIntent = Intent(this, ForumActivity::class.java)//intent allows you to interact with other activites
+        forumIntent.putExtra(EXTRA_USERNAME, username)
+        forumIntent.putExtra(EXTRA_USERID, userID)
+        forumIntent.putExtra(EXTRA_USEREMAIL, useremail)
         startActivity(forumIntent)//start activity
     }
 

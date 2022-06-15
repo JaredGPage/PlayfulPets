@@ -11,16 +11,17 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_forum.*
 
 class ForumActivity : AppCompatActivity() {
 
-    var email = ""
+    var useremail = ""
     var username = ""
     var userID = ""
-    //Firebase user
-    private lateinit var auth: FirebaseAuth;
+    //Firebase reference
+    private lateinit var dbref: DatabaseReference
 
 
 
@@ -29,34 +30,31 @@ class ForumActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forum)
 
-        //firebase check
-        val firebase : DatabaseReference = FirebaseDatabase.getInstance().getReference()
+        //database
+        //dbref = FirebaseDatabase.getInstance().getReference("Forum")
+        dbref = Firebase.database.reference
 
-        // Initialize Firebase Auth
-        auth = FirebaseAuth.getInstance()
-        //get current user
-        val currentUser = auth.currentUser
-        //assign current user's email to username
-        email = currentUser?.email.toString()
-        userID = currentUser?.uid.toString()
-        //remove domain and check that there is a value
-        val newUsername : String? = email.substringBefore("@")
-        if (newUsername != null) {
-            username = newUsername
-        }
+        //assign current user's details
+        username = intent.getStringExtra(EXTRA_USERNAME).toString()
+        useremail = intent.getStringExtra(EXTRA_USEREMAIL).toString()
+        userID = intent.getStringExtra(EXTRA_USERID).toString()
+
+
         //welcome text
-        forumPageText.text = "Welcome $username + id = $userID"
+        forumPageText.text = "Welcome $username + id = $userID + email = $useremail"
 
     }
 
 
     //method for logout button
     fun forumLogoutBtnClicked(view: View){
-        //firebase logout
-        Firebase.auth.signOut()
+
         //create intent which moves to main/login activity
         val loginIntent = Intent(this, MainActivity::class.java)//intent allows you to interact with other activites
         startActivity(loginIntent)//start activity
+        //set any current values to null
+        // TODO
+        //
     }
 
     //method to send you to forum activity
@@ -76,6 +74,9 @@ class ForumActivity : AppCompatActivity() {
     fun insertDataBtnClicked(view: View){
         //create intent which moves to add forum activity
         val addForumIntent = Intent(this, AddForumActivity::class.java)//intent allows you to interact with other activites
+        addForumIntent.putExtra(EXTRA_USERNAME, username)
+        addForumIntent.putExtra(EXTRA_USERID, userID)
+        addForumIntent.putExtra(EXTRA_USEREMAIL, useremail)
         startActivity(addForumIntent)//start activity
     }
 }

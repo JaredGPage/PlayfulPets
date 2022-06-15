@@ -16,7 +16,7 @@ import java.util.*
 class SignUpActivity : AppCompatActivity() {
 
     //Firebase connection
-    private lateinit var database: DatabaseReference
+    private lateinit var dbref: DatabaseReference
     //declare variables for user registeration
     var username = ""
     var email = ""
@@ -30,7 +30,7 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
 
         // Initialize Firebase Auth
-        database = Firebase.database.reference
+        dbref = Firebase.database.reference
     }
 
     override fun onStart() {
@@ -49,7 +49,7 @@ class SignUpActivity : AppCompatActivity() {
     private fun performAuth() {
         //set all the variables to their values
         //create uniques id
-        //var uniqueID = UUID.randomUUID().toString()
+        var uniqueID = UUID.randomUUID().toString()
 
         username = registerUsernameText.text.toString()
         email = registerEmailText.text.toString()
@@ -65,19 +65,19 @@ class SignUpActivity : AppCompatActivity() {
             registerPasswordRetypeText.setError("Passwords don't match!")
         } else{
             //call method to sign up user
-            firebaseSignUp(username, email, userpfp, password)
+            firebaseSignUp(username, uniqueID, email, userpfp, password)
         }
 
     }
 
-    private fun firebaseSignUp(userName: String, email: String, userpfp: String, password: String) {
+    private fun firebaseSignUp(userName: String, userID: String, email: String, userpfp: String, password: String) {
         //create model of user and write to database with that users details
 
         try {
             //make user in UserModel
-            val user = UserModel(userName, email, userpfp, password)
+            val user = UserModel(userName, userID, email, userpfp, password)
             //write to firebase
-            database.child("users").child(userName).setValue(user)
+            dbref.child("users").child(userName).setValue(user)
             //create intent to send user to signup page from the current page
             val mainIntent = Intent(this, MainActivity::class.java)//intent allows you to interact with other activites
             startActivity(mainIntent)
