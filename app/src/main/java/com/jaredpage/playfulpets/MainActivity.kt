@@ -26,14 +26,11 @@ class MainActivity : AppCompatActivity() {
     private var email = ""
     private var userpfp = ""
 
-    //Firebase auth used to connect to firebase user authentication
-    private lateinit var auth: FirebaseAuth;
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Initialize Firebase Auth
+        // Initialize Firebase connection
         database = Firebase.database.reference
 
     }

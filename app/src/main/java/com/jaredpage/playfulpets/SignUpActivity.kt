@@ -29,7 +29,7 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        // Initialize Firebase Auth
+        // Initialize Firebase connection
         dbref = Firebase.database.reference
     }
 
