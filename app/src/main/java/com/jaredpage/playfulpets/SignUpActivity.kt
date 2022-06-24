@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.jaredpage.playfulpets.dataModels.UserModel
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import java.lang.Exception
 import java.util.*

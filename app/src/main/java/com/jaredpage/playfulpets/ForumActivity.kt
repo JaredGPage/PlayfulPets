@@ -1,16 +1,10 @@
 package com.jaredpage.playfulpets
 
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_forum.*
@@ -67,7 +61,7 @@ class ForumActivity : AppCompatActivity() {
     //method to send you to maps activity
     fun mapsIntentClicked(view: View){
         //create intent which moves to maps activity
-        val mapsIntent = Intent(this, EventActivity::class.java)//intent allows you to interact with other activites
+        val mapsIntent = Intent(this, MapActivity::class.java)//intent allows you to interact with other activites
         startActivity(mapsIntent)//start activity
     }
 

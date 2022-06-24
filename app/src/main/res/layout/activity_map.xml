@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EventActivity">
+    tools:context=".MapActivity">
 
     <Button
         android:id="@+id/button5"
@@ -13,7 +13,8 @@
         android:layout_height="59dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:text="Map"
+        android:onClick="navigateEventAdd"
+        android:text="Add Park"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -37,17 +38,24 @@
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/button5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck"
-        map:cameraZoom="15"/>
-    <!--<com.google.android.gms.maps.MapView
+        map:cameraZoom="15"
+        tools:ignore="SpeakableTextPresentCheck" /><![CDATA[
+
+
+
+    app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="16dp" />
+
+    ]]><!--<com.google.android.gms.maps.MapView
         android:id="@+id/mapView2"
         android:layout_width="0dp"
         android:layout_height="0dp"

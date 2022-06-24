@@ -3,15 +3,12 @@ package com.jaredpage.playfulpets
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -73,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                 //toast message to display successful login
                 Toast.makeText(this, "Successfully login!", Toast.LENGTH_LONG).show()
                 //create intent to send user to forum page from the current page
-                val forumIntent = Intent(this, ForumActivity::class.java)//intent allows you to interact with other activites
+                val forumIntent = Intent(this, MapActivity::class.java)//intent allows you to interact with other activites
                 forumIntent.putExtra(EXTRA_USERNAME, username)
                 forumIntent.putExtra(EXTRA_USERID, userID)
                 forumIntent.putExtra(EXTRA_USEREMAIL, email)

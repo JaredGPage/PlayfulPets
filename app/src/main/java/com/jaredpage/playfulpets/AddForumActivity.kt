@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.jaredpage.playfulpets.dataModels.ForumModel
 import kotlinx.android.synthetic.main.activity_add_forum.*
 import java.lang.Exception
 import java.util.*
