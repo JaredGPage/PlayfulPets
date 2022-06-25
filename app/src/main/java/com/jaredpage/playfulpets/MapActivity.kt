@@ -25,12 +25,20 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapBinding
     private lateinit var database: DatabaseReference
+    private var username = ""
+    private var userID = ""
+    private var email = ""
+    private var useremail = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        username = intent.getStringExtra(EXTRA_USERNAME).toString()
+        useremail = intent.getStringExtra(EXTRA_USEREMAIL).toString()
+        userID = intent.getStringExtra(EXTRA_USERID).toString()
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -42,8 +50,25 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     fun navigateEventAdd(view: View){
-        val mainIntent = Intent(this, MainActivity::class.java)//intent allows you to interact with other activites
+        val mainIntent = Intent(this, AddToMap::class.java)//intent allows you to interact with other activites
+        mainIntent.putExtra(EXTRA_USERNAME, username)
+        mainIntent.putExtra(EXTRA_USERID, userID)
+        mainIntent.putExtra(EXTRA_USEREMAIL, email)
         startActivity(mainIntent)
+    }
+    fun chatIntentClicked(view: View){
+        val chatIntent = Intent(this, ChatActivity::class.java)//intent allows you to interact with other activites
+        chatIntent.putExtra(EXTRA_USERNAME, username)
+        chatIntent.putExtra(EXTRA_USERID, userID)
+        chatIntent.putExtra(EXTRA_USEREMAIL, email)
+        startActivity(chatIntent)//start activity
+    }
+    fun forumIntentClicked(view: View){
+        val forumIntent = Intent(this, ForumActivity::class.java)//intent allows you to interact with other activites
+        forumIntent.putExtra(EXTRA_USERNAME, username)
+        forumIntent.putExtra(EXTRA_USERID, userID)
+        forumIntent.putExtra(EXTRA_USEREMAIL, email)
+        startActivity(forumIntent)//start activity
     }
 
     /**

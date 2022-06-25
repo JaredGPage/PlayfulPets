@@ -18,6 +18,9 @@
             android:name=".AddToMap"
             android:exported="false" />
         <activity
+            android:name=".PrivateChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddForumActivity"
             android:exported="false" />
         <activity
@@ -43,6 +46,9 @@
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

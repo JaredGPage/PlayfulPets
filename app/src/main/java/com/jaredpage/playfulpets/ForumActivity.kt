@@ -55,6 +55,9 @@ class ForumActivity : AppCompatActivity() {
     fun forumIntentClicked(view: View){
         //create intent which moves to forum activity
         val forumIntent = Intent(this, ForumActivity::class.java)//intent allows you to interact with other activites
+        forumIntent.putExtra(EXTRA_USERNAME, username)
+        forumIntent.putExtra(EXTRA_USERID, userID)
+        forumIntent.putExtra(EXTRA_USEREMAIL, useremail)
         startActivity(forumIntent)//start activity
     }
 
@@ -62,7 +65,19 @@ class ForumActivity : AppCompatActivity() {
     fun mapsIntentClicked(view: View){
         //create intent which moves to maps activity
         val mapsIntent = Intent(this, MapActivity::class.java)//intent allows you to interact with other activites
+        mapsIntent.putExtra(EXTRA_USERNAME, username)
+        mapsIntent.putExtra(EXTRA_USERID, userID)
+        mapsIntent.putExtra(EXTRA_USEREMAIL, useremail)
         startActivity(mapsIntent)//start activity
+    }
+    //method to send you to chat activity
+    fun chatIntentClicked(view: View){
+        //create intent which moves to maps activity
+        val chatIntent = Intent(this, ChatActivity::class.java)//intent allows you to interact with other activites
+        chatIntent.putExtra(EXTRA_USERNAME, username)
+        chatIntent.putExtra(EXTRA_USERID, userID)
+        chatIntent.putExtra(EXTRA_USEREMAIL, useremail)
+        startActivity(chatIntent)//start activity
     }
 
     fun insertDataBtnClicked(view: View){

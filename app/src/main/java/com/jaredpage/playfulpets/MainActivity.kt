@@ -9,6 +9,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_map.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -70,11 +71,11 @@ class MainActivity : AppCompatActivity() {
                 //toast message to display successful login
                 Toast.makeText(this, "Successfully login!", Toast.LENGTH_LONG).show()
                 //create intent to send user to forum page from the current page
-                val forumIntent = Intent(this, MapActivity::class.java)//intent allows you to interact with other activites
-                forumIntent.putExtra(EXTRA_USERNAME, username)
-                forumIntent.putExtra(EXTRA_USERID, userID)
-                forumIntent.putExtra(EXTRA_USEREMAIL, email)
-                startActivity(forumIntent)
+                val mapIntent = Intent(this, MapActivity::class.java)//intent allows you to interact with other activites
+                mapIntent.putExtra(EXTRA_USERNAME, username)
+                mapIntent.putExtra(EXTRA_USERID, userID)
+                mapIntent.putExtra(EXTRA_USEREMAIL, email)
+                startActivity(mapIntent)
 
             }else{
                 Toast.makeText(this, "User does not exist!", Toast.LENGTH_LONG).show()

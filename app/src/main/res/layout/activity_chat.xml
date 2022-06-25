@@ -4,41 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ForumActivity">
-
+    tools:context=".ChatActivity">
     <TextView
         android:id="@+id/forumPageText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Forum Page"
+        android:text="Contacts"
         android:textAlignment="center"
+        android:textSize="35sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/forumRecyclerView"
+        android:id="@+id/userRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        tools:listitem="@layout/user_layout"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forumPageText" />
-
-    <Button
-        android:id="@+id/forumLogoutBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="forumLogoutBtnClicked"
-        android:text="LOGOUT"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
@@ -47,7 +37,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
         <ToggleButton
             android:id="@+id/mapIntent"
             android:layout_width="wrap_content"
@@ -71,24 +60,16 @@
             android:textOff="FORUM"
             android:textOn="FORUM" />
         <ToggleButton
-        android:id="@+id/chatIntent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/purple_500"
-        android:onClick="chatIntentClicked"
-        android:text="CHAT"
-        android:textColor="@color/white"
-        android:textOff="CHAT"
-        android:textOn="CHAT" />
+            android:id="@+id/chatIntent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/purple_500"
+            android:onClick="chatIntentClicked"
+            android:text="CHAT"
+            android:textColor="@color/white"
+            android:textOff="CHAT"
+            android:textOn="CHAT" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/insertDataBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="insertDataBtnClicked"
-        android:text="Insert"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forumLogoutBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
